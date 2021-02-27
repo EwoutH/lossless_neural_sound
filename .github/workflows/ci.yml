@@ -8,6 +8,7 @@ jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
@@ -21,3 +22,13 @@ jobs:
           repository: 'xiph/ogg'
           path: ogg
       - run: cmake .
+
+      - if: ${{ github.os == 'ubuntu'}}
+        run: make
+      - if: ${{ github.os == 'windows'}}
+        run: msbuild
+      - if: ${{ github.os == 'macos'}}
+        run: xcodebuild
+
+
+      
