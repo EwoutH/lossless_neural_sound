@@ -15,4 +15,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: 'xiph/flac'
+          path: flac
+      - uses: actions/checkout@v2
+        with:
+          repository: 'xiph/ogg'
+          path: ogg
       - run: cmake .
