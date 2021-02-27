@@ -23,11 +23,11 @@ jobs:
           path: ogg
       - run: cmake .
 
-      - if: ${{ github.os == 'ubuntu'}}
+      - if: ${{ runner.os == 'Linux'}}
         run: make
-      - if: ${{ github.os == 'windows'}}
+      - if: ${{ runner.os == 'Windows'}}
         run: msbuild
-      - if: ${{ github.os == 'macos'}}
+      - if: ${{ runner.os == 'macOS'}}
         run: xcodebuild
 
 
